@@ -9,9 +9,7 @@ exports.handler = function(event, context, callback) {
   const memStream = new MemoryStream();
   const html_utf8 = new Buffer(event.htmlDoc, 'base64').toString('utf8');
 
-  console.log(html_utf8);
-
-  wkhtmltopdf(html_utf8, { pageSize: 'letter' }, (error) => {
+  wkhtmltopdf(html_utf8, event.options, (error) => {
     if (error) {
       console.log('Failed to convert html to PDF... ( this is a problem with wkhtmltopdf )');
       callback(error);
