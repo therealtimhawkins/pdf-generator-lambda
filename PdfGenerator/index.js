@@ -12,9 +12,8 @@ exports.handler = function(event, context, callback) {
       callback(error);
       return;
     }
-  });
-
-  callback(null, {
-    message: 'Test is working'
+    callback(null, {
+      message: 'Test is working'
+    });
   });
 };
