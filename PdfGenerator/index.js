@@ -9,6 +9,8 @@ exports.handler = function(event, context, callback) {
   const memStream = new MemoryStream();
   const html_utf8 = new Buffer(event.htmlDoc, 'base64').toString('utf8');
 
+  console.log(html_utf8);
+
   wkhtmltopdf(html_utf8, { pageSize: 'letter' }, (error) => {
     if (error) {
       console.log('Failed to convert html to PDF... ( this is a problem with wkhtmltopdf )');
@@ -25,7 +27,7 @@ exports.handler = function(event, context, callback) {
       ContentType: 'application/pdf',
       Metadata: { "x-amz-meta-requestId": context.awsRequestId }
     };
-
+    
     s3.putObject(s3PutParams, function(error, data) {
       if ( error ) {
         console.error('s3:putObject failed!');
