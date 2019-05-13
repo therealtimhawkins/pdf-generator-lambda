@@ -1,4 +1,3 @@
-const fs = require('fs');
 const wkhtmltopdf = require('wkhtmltopdf');
 
 process.env['PATH'] = process.env['PATH'] + ':' + process.env['LAMBDA_TASK_ROOT'];
@@ -8,7 +7,7 @@ exports.handler = function(event, context, callback) {
 
   wkhtmltopdf(html_utf8, { pageSize: 'letter' }, (error) => {
     if (error) {
-      console.log('Failed to convert html to pdf...');
+      console.log('Failed to convert html to pdf... ( this is a problem with wkhtmltopdf )');
       callback(error);
       return;
     };
