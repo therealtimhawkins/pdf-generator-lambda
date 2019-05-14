@@ -9,6 +9,11 @@ exports.handler = function(event, context, callback) {
   const memStream = new MemoryStream();
   const html_utf8 = new Buffer(event.htmlDoc, 'base64').toString('utf8');
 
+  if (!html_utf8) {
+    callback(Error('Please submit a base64 encoded html doc to convert.'));
+    return;
+  };
+
   wkhtmltopdf(html_utf8, event.options, (error) => {
     if (error) {
       console.log('Failed to convert html to PDF... ( this is a problem with wkhtmltopdf )');
