@@ -32,7 +32,7 @@ describe('handler', () => {
   });
 
   it('should return error message is no htmlDoc is present', (done) => {
-    successfulEventMock.htmlDoc = '';
+    delete successfulEventMock.htmlDoc;
     
     LambdaTester(lambdaFunction.handler)
       .event(successfulEventMock)

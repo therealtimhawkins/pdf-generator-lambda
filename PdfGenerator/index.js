@@ -7,12 +7,13 @@ process.env['PATH'] = process.env['PATH'] + ':' + process.env['LAMBDA_TASK_ROOT'
 exports.handler = function(event, context, callback) {
   const s3 = new AWS.S3();
   const memStream = new MemoryStream();
-  const html_utf8 = new Buffer(event.htmlDoc, 'base64').toString('utf8');
 
-  if (!html_utf8) {
+  if (!event.htmlDoc) {
     callback(Error('Please submit a base64 encoded html doc to convert.'));
     return;
   };
+
+  const html_utf8 = new Buffer(event.htmlDoc, 'base64').toString('utf8');
 
   wkhtmltopdf(html_utf8, event.options, (error) => {
     if (error) {
