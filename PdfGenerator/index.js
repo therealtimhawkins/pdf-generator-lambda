@@ -17,7 +17,6 @@ exports.handler = function(event, context, callback) {
     };
 
     console.log(`PDF was generated successfully. Adding PDF to bucket ${event.bucket}...`);
-
     const s3PutParams = {
       Bucket: event.bucket,
       Key: event.key,
@@ -31,7 +30,7 @@ exports.handler = function(event, context, callback) {
         console.error('s3:putObject failed!');
         callback(error);
         return;
-      }
+      };
 
       console.log('PDF was uploaded to S3 successfully.');
       callback(null, {bucket: event.bucket, key: event.key});
