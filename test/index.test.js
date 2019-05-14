@@ -14,4 +14,15 @@ describe('handler', () => {
       .expectResult()
       .verify(done);
   });
+
+  it('should return bucket name and key if successful', (done) => {
+    const expectedResult = { bucket: 'pdfs-from-generator', key: 'lambdaTestKey' };
+
+    LambdaTester(lambdaFunction.handler)
+      .event(successfulEventMock)
+      .expectResult(result => {
+        expect(result).toEqual(expectedResult);
+      })
+      .verify(done);
+  });
 });
