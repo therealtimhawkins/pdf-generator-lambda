@@ -1,0 +1,24 @@
+{
+  "name": "pdf-generator-lambda-function",
+  "version": "1.0.0",
+  "description": "### Deploy to Lambda To deploy the lambda function run ```./build.sh PdfGenerator``` from the route directory.",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "lambda-tester": "^3.5.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/therealtimhawkins/pdf-generator-lambda.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/therealtimhawkins/pdf-generator-lambda/issues"
+  },
+  "homepage": "https://github.com/therealtimhawkins/pdf-generator-lambda#readme"
+}
