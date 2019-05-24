@@ -5,6 +5,7 @@ const AWS = require('aws-sdk');
 process.env['PATH'] = process.env['PATH'] + ':' + process.env['LAMBDA_TASK_ROOT'];
 
 exports.handler = function(event, context, callback) {
+
   const s3 = new AWS.S3();
   const memStream = new MemoryStream();
 
