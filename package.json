@@ -10,7 +10,8 @@
     "lambda-tester": "^3.5.0"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "deploy": "./build.sh PdfGenerator"
   },
   "repository": {
     "type": "git",
