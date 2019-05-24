@@ -34,13 +34,18 @@ exports.handler = function(event, context, callback) {
     
     s3.putObject(s3PutParams, function(error, data) {
       if ( error ) {
-        console.error('s3:putObject failed!');
+        console.error('Failed to pass the object to S3...');
         callback(error);
         return;
       };
 
-      console.log('PDF was uploaded to S3 successfully.');
-      callback(null, {bucket: event.bucket, key: event.key});
+      console.log(process.env.AWS_REGION);
+
+      const pdfUrl = `http://s3.${process.env.AWS_REGION}.amazonaws.com/${event.bucket}/${event.key}`;
+      callback(null, { 
+        message: 'Pdf created successfully and saved in S3.',
+        url: pdfUrl 
+      });
     });
   }).pipe(memStream);
 };

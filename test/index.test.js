@@ -6,6 +6,10 @@ AWS.mock('S3', 'putObject', function (params, callback) {
   callback(null, "successfully put item in database");
 });
 
+AWS.mock('S3', 'getResourceUrl', function (params, callback) {
+  callback(null, "http://bucketurl.aws");
+});
+
 describe('handler', () => {
   var successfulEventMock;
 
